@@ -1,0 +1,36 @@
+		/*컨텐츠 서비스 전송,변환 크리드 넓이*/
+		.regridColunms .x-grid-cell-inner{
+			padding : 10 7 7 10
+		}
+		
+		/*clip 그리드 문자 가운데 표기*/
+		.clipColunms .x-grid-with-row-lines .x-grid-td{
+			border-bottom-width: 1px;
+			vertical-align: middle;
+		}
+		
+		/*폐기 그리드 문자 가운데 표기*/
+		.discardGrid .x-grid-cell-inner{
+			padding : 9 6 9 5
+		}
+		/*정렬 그리드 문자 가운데 표기*/
+		.arrangeColunms .x-grid-with-row-lines .x-grid-td{
+			border-bottom-width: 1px;
+			vertical-align: middle;
+		}
+		
+		/*form label background  색상 지정*/
+		.customFormBackground .x-form-item-label{
+			color: black;
+			font: normal 12px/14px tahoma,arial,verdana,sans-serif;
+			margin-top: 4px;
+			padding-left: 11px;
+		}
+		.customFormBackground .x-form-item{
+			font: normal 12px tahoma,arial,verdana,sans-serif;
+			background-color: aliceblue; 
+		}
+		/*시스템 관리 에피소드 그리드 넓이*/
+		.regridColunms .x-grid-cell-inner{
+			padding : 9.69 7 7 10
+		}

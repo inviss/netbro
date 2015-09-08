@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+  
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@14.36.147.34:1521:d2net</property>
+        <property name="connection.username">cms</property>
+        <property name="connection.password">cms</property>
+         
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+         
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+ 
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+ 
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+        
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+         
+        <!-- enable second level cache and query cache -->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+  <!--  
+        <mapping class="kr.co.d2net.dto.CategoryTbl"></mapping>
+        <mapping class="kr.co.d2net.dto.EpisodeTbl"></mapping>
+        -->
+        
+        <mapping class="kr.co.d2net.dto.Address"></mapping>
+        <mapping class="kr.co.d2net.dto.Employee"></mapping>
+        
+          
+    </session-factory>
+</hibernate-configuration>

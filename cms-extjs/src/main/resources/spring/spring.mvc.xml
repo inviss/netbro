@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- annotation config & scan -->
+	<context:annotation-config />
+	<context:component-scan base-package="kr.co.d2net.controller, kr.co.d2net.aop.mvc" />
+	<!-- <mvc:annotation-driven /> JSR-303 support will be detected on classpath 
+		and enabled automatically DefaultAnnotationHandlerMapping, AnnotationMethodHandlerAdapter를 
+		자동 등록한다. -->
+
+	<mvc:annotation-driven conversion-service="conversionService"/>
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="kr.co.d2net.mvc.adapter.TextConverter" />
+				<bean class="kr.co.d2net.mvc.adapter.IntegerConverter" />
+				<bean class="kr.co.d2net.mvc.adapter.LongConverter" />
+				<bean class="kr.co.d2net.mvc.adapter.DateConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/clip/*" />
+			<mvc:mapping path="/contents/arrange/*" />
+			<mvc:mapping path="/contents/discard/*" />
+			<mvc:mapping path="/contents/archive/*" />
+			<mvc:mapping path="/work/tra/*" />
+			<mvc:mapping path="/work/trs/*" />
+			<mvc:mapping path="/disuse/*" />
+			<mvc:mapping path="/admin/category/*" />
+			<mvc:mapping path="/admin/auth/*" />
+			<mvc:mapping path="/admin/user/*" />
+			<mvc:mapping path="/admin/code/*" />
+			<mvc:mapping path="/admin/storage/*" />
+			<mvc:mapping path="/admin/equipment/*" />
+			<mvc:mapping path="/admin/profile/*" />
+			<mvc:mapping path="/admin/busipartner/*" />
+			<mvc:mapping path="/admin/busicategory/*" />
+			<mvc:mapping path="/admin/notice/*" />
+			<mvc:mapping path="/statistic/*" />
+			<mvc:mapping path="/statistic/year/*" />
+			<mvc:mapping path="/monitor/*" />
+			<bean id="baseCheckInterceptor" class="kr.co.d2net.interceptor.BaseCheckInterceptor" />
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
+	<!-- tiles2 layout config -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:/config/tiles.cfg.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="beanNameResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+	</bean>
+
+	<!-- view name tanslator -->
+	<bean id="viewNameTranslator"
+		class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator" />
+
+	<!-- view resolver -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<entry key="xml" value="application/xml" />
+				<entry key="ssc" value="text/html" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+				<bean class="kr.co.d2net.viewer.ExtUrlBasedViewResolver">
+					<property name="viewClass" value="kr.co.d2net.viewer.ExtTilesView" />
+					<property name="exposeSpringMacroModel" value="true" />
+				</bean>
+
+				<bean
+					class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+					<property name="cache" value="true" />
+					<property name="prefix" value="" />
+					<property name="suffix" value=".ftl" />
+					<property name="exposeSpringMacroHelpers" value="true" />
+				</bean>
+
+				<bean
+					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="prefix" value="/WEB-INF/views/" />
+					<property name="suffix" value=".jsp" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+					<property name="prefixJson" value="true" />
+				</bean>
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<constructor-arg>
+						<bean class="kr.co.d2net.utils.ClasspathScanningJaxb2Marshaller">
+							<property name="basePackages">
+								<list>
+									<value>kr.co.d2net.dto.xml</value>
+								</list>
+							</property>
+						</bean>
+					</constructor-arg>
+				</bean>
+			</list>
+		</property>
+		<property name="order" value="1" />
+	</bean>
+
+
+	<bean id="jsonView"
+		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+	<bean id="fileView" class="kr.co.d2net.viewer.FileDownloadView" />
+
+	<!-- FreeMarker Configurer and View Resolver -->
+	<bean id="freeMarkerConfigurer"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/views/" />
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="default_encoding">utf-8</prop>
+				<prop key="template_update_delay">0</prop>
+				<prop key="number_format">#.#######</prop>
+				<prop key="datetime_format">yyyy-MM-dd</prop>
+			</props>
+		</property>
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="xml_escape" value-ref="fmXmlEscape" />
+			</map>
+		</property>
+	</bean>
+	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<!-- one of the properties available; the maximum file size in bytes  -->
+		<property name="maxUploadSize" value="10485760" />
+	</bean>
+<!--
+<bean id="multipartResolver"
+      class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</bean>
+		-->
+	
+	<bean id="freeMarkerTemplateMethod" class="kr.co.d2net.utils.FreeMarkerTemplateMethod" />
+
+</beans>
