@@ -1,0 +1,317 @@
+@charset "utf-8"; 
+@font-face {
+  font-family:'나눔고딕';
+  src: url('NanumGothic.eot') format('eot'),  /* IE6?8 */
+       url('NanumGothic.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('NanumGothic.ttf') format('truetype');  /* Saf3?5, Chrome4+, FF3.5, Opera 10+ */
+}
+/**************************** 
+   NetBro-cms (13.09.03) by wonsub
+****************************/
+ 
+ul#category_tree, ul#category_tree * {margin:0; padding:0; list-style:none; border:none; overflow:hidden; text-decoration:none; color:#555;}
+ul#category_tree a:hover {text-decoration:underline;}
+ul#category_tree ul {padding:0 0 0 5px; zoom:1;}
+ul#category_tree li {position:relative; background:url(../images/tree_bg.gif) no-repeat 7px top; padding:0 0 0 20px;  line-height:18px; zoom:1;}
+ul#category_tree li.end {background-image:url(../images/tree_bg2.gif);}
+ul#category_tree li a.control {position:absolute; left:0px; top:1px; display:block; width:9px; height:9px; padding-left:3px;padding-bottom:6px;}
+
+li.categoryId {display: none}
+
+
+ul#treeStart, ul#treeStart * {margin:0; padding:0; list-style:none; border:none; overflow:hidden; text-decoration:none; color:#555;}
+ul#treeStart a:hover {text-decoration:underline;}
+ul#treeStart ul {padding:0 0 0 5px; zoom:1;}
+ul#treeStart li {position:relative; background:url(../images/tree_bg.gif) no-repeat 7px top; padding:0 0 0 20px;  line-height:18px; zoom:1;}
+ul#treeStart li.end {background-image:url(../images/tree_bg2.gif);}
+ul#treeStart li a.control {position:absolute; left:0px; top:1px; display:block; width:9px; height:9px; padding-left:3px;padding-bottom:6px;}
+
+li.treeStart {display: none}
+
+
+
+ul#tree_start, ul#tree_start * {margin:0; padding:0; list-style:none; border:none; overflow:hidden; text-decoration:none; color:#555;}
+ul#tree_start a:hover {text-decoration:underline;}
+ul#tree_start ul {clear:both;padding:0 0 0 0px; zoom:1;}
+ul#tree_start li {clear:both;position:relative; background:url(../images/tree_bg.gif) no-repeat 7px top; padding:0 0 0 20px; line-height:18px; zoom:1;}
+ul#tree_start li.end {clear:both;background-image:url(../images/tree_bg2.gif);}
+ul#tree_start li a.control {position:absolute; left:0px; top:1px; display:block; width:9px; height:9px; padding-left:3px;padding-bottom:6px;}
+ul#tree_start input.ip_text{width:270px;height:18px;border:1px solid #a2a2a2;}
+
+#footer {backgroud : none}
+
+
+
+/*#theInputLayer{position:relative;top:555px;left:-550px;width:277px;height:250px;display:none;z-index:1000;border:1px solid #cecece;background-color:#EBEBEB;overflow-x:scroll;overflow-y:scroll;}*/
+#theInputLayer{position:absolute;top:79px;left:100px;width:277px;height:250px;display:none;z-index:1000;border:1px solid #cecece;background-color:#EBEBEB;overflow-x:scroll;overflow-y:scroll;}
+/*#theInputLayer ul{float:left;padding-left:3px;margin-bottom:3px;}
+#theInputLayer li{clear:both;float:left;height:20px;}
+#theInputLayer li:hover{background-color:#CFF} */
+
+
+
+.box1 #inputcategory {position:absolute;top:55px;left:100px;width:100px;height:19px;display:block;z-index:10}
+/*.box1 #inputcategory {position:relative;top:55px;left:-550px;width:100px;height:250px;display:block;z-index:10}*/
+.box1 #intree {position:absolute;top:55px;left:186px;width:10px;height:20px;display:block;z-index:12;float:right;}
+
+ul#inputTree_start, ul#tree_start * {margin:0; padding:0; list-style:none; border:none; overflow:hidden; text-decoration:none; color:#555;}
+ul#inputTree_start a:hover {text-decoration:underline;}
+ul#inputTree_start ul {clear:both;padding:0 0 0 0px; zoom:1;}
+ul#inputTree_start li {clear:both;position:relative; background:url(../images/tree_bg.gif) no-repeat 7px top; padding:0 0 0 20px; line-height:18px; zoom:1;}
+ul#inputTree_start li.end {clear:both;background-image:url(../images/tree_bg2.gif);}
+ul#inputTree_start li a.control {position:absolute; left:0px; top:1px; display:block; width:9px; height:9px; padding-left:3px;padding-bottom:6px;}
+ul#inputTree_start input.ip_text{width:270px;height:18px;border:1px solid #a2a2a2;}
+
+.box1 dd img{display:block;}
+
+/*달력관련 css*/
+.ui-datepicker{ font-size: 12px; width: 160px; }
+.ui-datepicker select.ui-datepicker-month{ width:30%; font-size: 11px; }
+.ui-datepicker select.ui-datepicker-year{ width:40%; font-size: 11px; }
+
+
+/*통계관련 css 20131216 임시테이블 구현*/
+
+/* 기간별*/
+#forPeriod{float:left;width:937px;height:550px;}
+#forPeriod .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:-34px;}
+#forPeriod .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#forPeriod .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#forPeriod .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+/* 기간별*/
+#forPeriodPrint{float:left;width:937px;height:550px;}
+#forPeriodPrint .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:-34px;}
+#forPeriodPrint .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#forPeriodPrint .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#forPeriodPrint .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+
+/* 연별*/
+#forYear{display:none;float:left;width:937px;height:550px;}
+#forYear .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:-23px;}
+#forYear .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#forYear .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#forYear .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+/* 상세조회*/
+#forDetail{float:left;width:937px;height:550px;}
+#forDetail .box2{position:relative;width:937px;height:545px;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:8px;}
+#forDetail .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#forDetail .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#forDetail .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+
+/* 기간별 조회화면의 기간검색박스*/
+.period {position:relative;width:951px;height:62px;background-color:#f3f4f8;border:1px solid #c8cbd0;}  
+.period .searchbox1{position:absolute;width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 553px}
+.period .searchbox2{width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-right: 553px}
+.period dl{position:relative;width:100%;}
+.period dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.period dd{float:left;margin-top:9px;}
+.period dd img{display:block;float:right;}
+.period .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.period .viewicon li{float:right;margin-left:3px;}
+
+
+
+/* 연별 조회화면의 기간검색박스*/
+.year {position:relative;width:951px;height:62px;background-color:#f3f4f8;border:1px solid #c8cbd0;}  
+.year .searchbox2{width:182px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 755px}
+.year dl{position:relative;width:100%;}
+.year dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.year dd{float:left;margin-top:9px;}
+.year select{float:left;margin-top:14px;width :80px}
+.year dd img{display:block;float:right;}
+.year .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.year .viewicon li{float:right;margin-left:3px;}
+
+
+
+/*상세 조회화면의 기간검색박스*/
+.detail {position:relative;width:951px;height:41px;background-color:#f3f4f8;border:1px solid #c8cbd0;}  
+.detail .searchbox2{width:182px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 755px}
+.detail dl{position:relative;width:100%;}
+.detail dt{clear:both;float:left;width:200px;margin-top:15px;text-align:center;font-weight : bold;}
+.detail dd{float:left;margin-top:9px;}
+.detail select{float:left;margin-top:14px;width :80px}
+.detail dd img{display:block;float:right;}
+.detail .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.detail .viewicon li{float:right;margin-left:3px;}
+
+/* 상세화면 paging */
+#forDetail .paginate{padding:10px 5px;text-align:center;line-height:normal}
+#forDetail .paginate span{display:inline-block;position:relative;padding:2px 10px;font-weight:bold;font-size:12px;font-family:Tahoma, Sans-serif;color:#333;line-height:normal;text-decoration:none;vertical-align:middle}
+	
+#forDetail .paginate strong{display:inline-block;position:relative;margin:0 -2px 5px -2px;padding:2px 8px;font-weight:bold;font-size:12px;font-family:Tahoma, Sans-serif;color:#333;line-height:normal;text-decoration:none;vertical-align:middle}
+#forDetail .paginate a{padding:0 5px;}
+#forDetail .paginate a:hover,
+#forDetail .paginate a:active,
+#forDetail .paginate a:focus{background-color:#f8f8f8}
+#forDetail .paginate strong{color:#f60}
+#forDetail .paginate a,
+#forDetail .paginate .direction{font-weight:normal;color:#767676;white-space:nowrap;}
+#forDetail .paginate .direction span{font-weight:bold;font-size:14px;margin-bottom:3px;}
+#forDetail .paginate .direction:hover,
+#forDetail .paginate .direction:active,
+#forDetail .paginate .direction:focus{background-color:#fff;color:#333}
+
+
+/* 기간별 조회 paging */
+#statisticChartForPeriod .paginate{padding:136px 5px;text-align:center;line-height:normal}
+#statisticChartForPeriod .paginate span{display:inline-block;position:relative;padding:2px 10px;font-weight:bold;font-size:12px;font-family:Tahoma, Sans-serif;color:#333;line-height:normal;text-decoration:none;vertical-align:middle}
+	
+#statisticChartForPeriod .paginate strong{display:inline-block;position:relative;margin:0 -2px 5px -2px;padding:2px 8px;font-weight:bold;font-size:12px;font-family:Tahoma, Sans-serif;color:#333;line-height:normal;text-decoration:none;vertical-align:middle}
+#statisticChartForPeriod .paginate a{padding:0 5px;}
+#statisticChartForPeriod .paginate a:hover,
+#statisticChartForPeriod .paginate a:active,
+#statisticChartForPeriod .paginate a:focus{background-color:#f8f8f8}
+#statisticChartForPeriod .paginate strong{color:#f60}
+
+#statisticChartForPeriod .paginate .leftDirection{font-weight:normal;color:#767676;white-space:nowrap;left:-464px}
+#statisticChartForPeriod .paginate .leftDirection2{font-weight:normal;color:#767676;white-space:nowrap;left:-453px}
+#statisticChartForPeriod .paginate .rightDirection{font-weight:normal;color:#767676;white-space:nowrap;right:-464px}
+#statisticChartForPeriod .paginate .rightDirection2{font-weight:normal;color:#767676;white-space:nowrap;right:-453px}
+#statisticChartForPeriod .paginate a,
+#statisticChartForPeriod .paginate .direction{font-weight:normal;color:#767676;white-space:nowrap;}
+#statisticChartForPeriod .paginate .direction span{font-weight:bold;font-size:14px;margin-bottom:3px;}
+#statisticChartForPeriod .paginate .direction:hover,
+#statisticChartForPeriod .paginate .direction:active,
+#statisticChartForPeriod .paginate .direction:focus{background-color:#fff;color:#333}
+
+/* 통계그래프 박스-기간별*/
+.statisticChartForPeriod {position:relative;width:951px;height:340px;background-color:#f3f4f8;border:1px solid #c8cbd0;margin-top : 8px;}  
+.statisticChartForPeriod .searchbox1{position:absolute;width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 553px}
+.statisticChartForPeriod .searchbox2{width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-right: 553px}
+.statisticChartForPeriod dl{position:relative;width:100%;}
+.statisticChartForPeriod dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.statisticChartForPeriod dd{float:left;margin-top:9px;}
+.statisticChartForPeriod dd img{display:block;float:right;}
+.statisticChartForPeriod .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.statisticChartForPeriod .viewicon li{float:right;margin-left:3px;}
+
+
+.graphForPeriod {position:absolute;width:899px;height:310px;background-color:#f3f4f8;border:1px solid #c8cbd0;margin-left:24px;margin-top:14px;}  
+.graphForPeriod .searchbox1{position:absolute;width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 553px}
+.graphForPeriod .searchbox2{width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-right: 553px}
+.graphForPeriod dl{position:relative;width:100%;}
+.graphForPeriod dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.graphForPeriod dd{float:left;margin-top:9px;}
+.graphForPeriod dd img{display:block;float:right;}
+.graphForPeriod .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.graphForPeriod .viewicon li{float:right;margin-left:3px;}
+
+.PeriodTitle {position:relative;width:951px;height:310px;background-color:#f3f4f8;border:1px solid #c8cbd0;}  
+.PeriodTitle .searchbox1{position:absolute;width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 553px}
+.PeriodTitle .searchbox2{width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-right: 553px}
+.PeriodTitle dl{position:relative;width:100%;}
+.PeriodTitle dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.PeriodTitle dd{float:left;margin-top:9px;}
+.PeriodTitle dd img{display:block;float:right;}
+.PeriodTitle .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.PeriodTitle .viewicon li{float:right;margin-left:3px;}
+
+/* 통계그래프 박스 -연별*/
+.statisticChartForYear {position:relative;width:951px;height:310px;background-color:#f3f4f8;border:1px solid #c8cbd0;margin-top : 6px;}  
+.statisticChartForYear .searchbox1{position:absolute;width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 553px}
+.statisticChartForYear .searchbox2{width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-right: 553px}
+.statisticChartForYear dl{position:relative;width:100%;}
+.statisticChartForYear dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.statisticChartForYear dd{float:left;margin-top:9px;}
+.statisticChartForYear dd img{display:block;float:right;}
+.statisticChartForYear .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.statisticChartForYear .viewicon li{float:right;margin-left:3px;}
+
+.graphForYear {position:relative;width:951px;height:310px;background-color:#f3f4f8;border:1px solid #c8cbd0;margin-top : 6px;}  
+.graphForYear .searchbox1{position:absolute;width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 553px}
+.graphForYear .searchbox2{width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-right: 553px}
+.graphForYear dl{position:relative;width:100%;}
+.graphForYear dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.graphForYear dd{float:left;margin-top:9px;}
+.graphForYear dd img{display:block;float:right;}
+.graphForYear .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.graphForYear .viewicon li{float:right;margin-left:3px;}
+
+.YearTitle {position:relative;width:951px;height:310px;background-color:#f3f4f8;border:1px solid #c8cbd0;}  
+.YearTitle .searchbox1{position:absolute;width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-left: 553px}
+.YearTitle .searchbox2{width:390px;height:44px;background:url(../images/cate_bg.gif) no-repeat;margin:0 auto;margin-top:9px;margin-right: 553px}
+.YearTitle dl{position:relative;width:100%;}
+.YearTitle dt{clear:both;float:left;width:92px;margin-top:15px;text-align:center;}
+.YearTitle dd{float:left;margin-top:9px;}
+.YearTitle dd img{display:block;float:right;}
+.YearTitle .viewicon{float:right;margin-right:7px;margin-top:9px;}
+.YearTitle .viewicon li{float:right;margin-left:3px;}
+
+/* 모니터링 그래프*/
+#monitoringGraph{float:left;width:1057px;height:324px;background-color: #f3f4f8;}
+#monitoringGraph .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:5px;}
+#monitoringGraph .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#monitoringGraph .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#monitoringGraph .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+#monitoringGraph1{width:240px;height:250px;position:absolute;margin-left:798px;margin-top:30px;}
+#monitoringGraph1 .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:5px;}
+#monitoringGraph1 .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#monitoringGraph1 .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#monitoringGraph1 .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+#monitoringGraph2{width:240px;height:250px;position:absolute;margin-left:539px;margin-top:30px;}
+#monitoringGraph2 .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:5px;}
+#monitoringGraph2 .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#monitoringGraph2 .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#monitoringGraph2 .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+#monitoringGraph3{width:240px;height:250px;position:absolute;margin-left:279px;margin-top:30px;}
+#monitoringGraph3 .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:5px;}
+#monitoringGraph3 .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#monitoringGraph3 .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#monitoringGraph3 .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+#monitoringGraph4{width:240px;height:250px;position:absolute;margin-left:18px;margin-top:30px;}
+#monitoringGraph4 .box2{position:relative;width:937px;height:545px;overflow-y:scroll;padding:7px;border:1px solid #cccccc;background-color:#f3f4f8;margin-top:5px;}
+#monitoringGraph4 .story{float:left;width:112px;height:85px;border:1px solid #2e2e2e;background-color:#5b5b5b;margin:3px;}
+#monitoringGraph4 .story dt{float:left;padding:3px 3px 0 3px;color:#333;}
+#monitoringGraph4 .story dd{float:left;width:100%;text-align:center;color:#d5d5d5;}
+
+/*모니터링 리스트*/
+#monitoringList{width:640px;height:100px;}
+.monitoringListcover{height:200px;border-bottom:1px solid #fff;}
+
+
+/* 컨텐츠 & 클립 상세검색 레이어 */
+.detailSearch{position:absolute;width:279px;height:144px;border:1px solid #c8cbd0;margin-top:-6px;margin-left:100px;overflow-y:scroll; overflow-x:hidden;display:none;background:rgb(228,228,228)}
+.detailSearch .viewpart select{margin-top:4px;margin-left:9px;width :173px;height:20px;}
+.viewpart{float:left;width:385px;padding:13px 0;border-bottom:1px solid #cecece;}
+.viewpart:hover {background:#fffbec;}
+.viewpart .in_01{float:left;margin:0 8px;}
+.viewpart .thumb{float:left;padding-top:5px;}
+.viewpart .list{float:right;width:225px;padding-top:5px;}
+.viewpart .list dt{font-weight:bold;}
+.viewpart .listcontent{float:left;}
+.viewpart select{margin-top:4px;margin-left:20px;width :110px}
+
+
+#rightMenu{display:hidden;position:absolute;top:79px;left:100px;width:277px;height:250px;display:none;z-index:1000;border:1px solid #cecece;background-color:#EBEBEB;}
+
+#menu{position:absolute;width:125px;border:2px solid black;background-color:menu;font-family:Verdana;line-height:20px;cursor:default;display:none;}
+.menuitems{padding-left:15px;padding-right:15px;font-family:굴림;font-size:12;}
+
+/* 관리/카테고리 화면의 메뉴순서 변경 버튼 위치지정 */
+#imgBox{margin-left:297px;margin-top:-58px;position: absolute;}
+
+
+
+
+/* CMS 메뉴 위치지정 */
+#logo{height:26px;width:143px;top: 0px;margin-left: -3px;position: relative;}
+#clipsrch{height:33px;width:149px;top: 0px;margin-left: 3px;position: absolute;}
+#contents{height:33px;width:149px;top: 0px;margin-left: 163px;position: absolute;}
+#del{height:33px;width:149px;top: 0px;margin-left: 323px;position: absolute;}
+#statistic{height:33px;width:149px;top: 0px;margin-left: 483px;position: absolute;}
+#admin{height:33px;width:149px;top: 0px;margin-left: 643px;position: absolute;}
+#loginOut{height:34px;width:100px;top: 0px;margin-left: 850px;position: absolute;}
+#loginIn{height:34px;width:100px;top: 0px;margin-left: 850px;position: absolute;}
+
+
+/* 저장중 로딩표현 */
+div#viewLoading {text-align: center;padding-top: 70px;background: #FFFFF0;filter: alpha(opacity=60);opacity: alpha*0.6;}

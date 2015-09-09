@@ -1,0 +1,228 @@
+<html>
+<head>
+    <title>Extjs sample</title>
+    <link rel="stylesheet" type="text/css" href="../extjs/resources/css/ext-all.css" /> 
+    <script type="text/javascript" src="../extjs/ext-all-debug.js"></script>
+
+    <script type="text/javascript">
+        Ext.require('*');
+        Ext.onReady(function() {
+        
+        
+        //대매뉴 버튼
+        var clip = Ext.create('Ext.Button',{
+			id : 'clip',
+			text : '클립검색',
+			flex : 1 
+		});
+		 var contents = Ext.create('Ext.Button',{
+			id : 'contents',
+			text : '컨텐츠검색',
+			flex : 1 
+		});
+		 var work = Ext.create('Ext.Button',{
+			id : 'work',
+			text : '전송&변환관리',
+			flex : 1 
+		});
+		 var statistic = Ext.create('Ext.Button',{
+			id : 'statistic',
+			text : '통계',
+			flex : 1 
+		});
+		 var monitor = Ext.create('Ext.Button',{
+			id : 'monitor',
+			text : '모니터링',
+			flex : 1 
+		});
+		 var manage = Ext.create('Ext.Button',{
+			id : 'manage',
+			text : '관리',
+			flex : 1 
+		});
+       
+       //트리 스토어
+       var store = Ext.create('Ext.data.TreeStore', {
+    root: {
+        expanded: true,
+        children: [
+            { text: "PDS", leaf: true },
+            { text: "NDS", expanded: true, children: [
+                { text: "뉴스", leaf: true },
+                { text: "시사", leaf: true}
+            ] },
+            { text: "CMS", leaf: true }
+        ]
+    }
+});
+
+//검색결과 스토어
+Ext.create('Ext.data.Store', {
+    storeId:'simpsonsStore',
+    fields:['title', 'ctId', ' regDt','brdDd','categoryNm'],
+    data:{'items':[
+        { 'title': '사건25시',  "ctId":"1",  "regDt":"2014-05-01" ,"brdDd" : '2014-05-01',"categoryNm" : 'PDS' },
+        { 'title': '8시 뉴스',  "ctId":"2",  "regDt":"2014-05-02"  ,"brdDd" : '2014-05-01',"categoryNm" : 'NDS' },
+        { 'title': '한국문화', "ctId":"3",  "regDt":"2014-05-03"  ,"brdDd" : '2014-05-01',"categoryNm" : 'CMS'  },
+        { 'title': '고고80', "ctId":"4", "regDt":"2014-05-04" ,"brdDd" : '2014-05-01',"categoryNm" : '뉴스'   }
+    ],'totalCount' : 4},
+    proxy: {
+        type: 'memory',
+        reader: {
+            type: 'json',
+            root: 'items'
+        }
+    }
+});
+
+
+//우측검색결과 패널
+var gridSearch = Ext.create('Ext.grid.Panel', {
+    
+    store: Ext.data.StoreManager.lookup('simpsonsStore'),
+    columns: [
+        { text: '영상ID',  dataIndex: 'ctId' ,flex :3},
+        { text: '제목', dataIndex: 'title'  ,flex :3 },
+        { text: '등록일', dataIndex: 'regDt'  ,flex :3},
+        { text: '방송일', dataIndex: 'brdDd'  ,flex :3},
+        { text: '카테고리ID', dataIndex: 'categoryNm'  ,flex :3}
+    ],
+    height: '100%',
+    width: '100%' ,
+    listeners : {
+    select : function(selModel,record,index,options){
+   var ctId = this.getSelectionModel().getSelection()[0].data.ctId
+   var title = this.getSelectionModel().getSelection()[0].data.title
+   this.addNewTab(ctId,title);
+    }
+    
+    },
+    addNewTab : function(ctId,title){
+    var newTab = Ext.create('Ext.tab.Panel',{
+  			  width : '100%'
+        ,height : '90%'
+        ,plain : true
+         ,title : title
+         ,closable : true
+         ,items : [{
+         xtype : 'panel'
+         ,layout : {
+         type : 'vbox'
+         ,align : 'stretch'
+         }
+         ,width : '100%'
+         ,height : '100%'
+        , items : [{html : 'video&metaInfo'}
+         				,{html : 'storyBoard'}]
+         				 
+         				}]
+    })
+    
+    mainView.add(newTab).show();
+    } , bbar: [{
+        xtype: 'pagingtoolbar',
+        store: store,   // same store GridPanel is using
+     
+        displayInfo: true
+    }]
+});
+//좌측 트리패널
+   var treepanel = Ext.create('Ext.tree.Panel',{
+       		width : '100%',
+       		height : 300,
+       		store: store,
+    			rootVisible: true
+       });
+
+//좌측 검색패널
+var searchPanel = Ext.create('Ext.Panel', {
+    width: '100%',
+    height: 600,
+   
+    layout: 'form', 
+    bodyPadding: 5,
+    defaultType: 'textfield',
+    items: [{
+   					 xtype: 'fieldset',
+                title: '등록일',
+                defaultType: 'textfield',
+                layout: 'anchor',
+                defaults: {
+                    anchor: '100%'
+                },
+               items: [{
+                        name: 'startDate',
+                        xtype : 'datefield',
+                        fieldLabel: '시작일',
+                        flex: 2,
+                        allowBlank: false
+                    }, {
+                        name: 'endDt',
+                        fieldLabel: '종료일',
+                        xtype : 'datefield',
+                        flex: 2,
+                        margins: '0 0 0 6',                       
+                        allowBlank: false
+                    }]              
+   					},{
+   						fieldLabel : '키워드'
+   					} ]
+    
+});
+   
+       //탑메뉴
+        var menu = Ext.create('Ext.panel.Panel',{
+        layout : {
+           type : 'hbox'
+          ,align : 'stretch'
+         }
+        ,width : '100%'
+        ,height : 50
+        ,renderTo : 'menu'
+    
+        ,items : [clip,contents,work,statistic,monitor,manage]
+        })
+        
+        //좌측패널
+        var left = Ext.create('Ext.panel.Panel',{
+        layout : {
+        type : 'vbox'
+        }
+        ,height : '100%'
+        ,width : '100%'
+        ,renderTo : 'left'
+        , title : '좌측메뉴'
+        ,items : [treepanel,searchPanel]
+        })
+        
+        //우측패널
+         var mainView = Ext.create('Ext.tab.Panel',{
+         width : '100%'
+        ,height : '90%'
+        ,plain : true
+        ,renderTo : 'right'
+        ,items : [{title : '검색결과',
+        items : [gridSearch]}]
+       
+        })
+        
+      //  var newTab=Ext
+         Ext.EventManager.onWindowResize(menu.doLayout, menu);
+         Ext.EventManager.onWindowResize(left.doLayout, left);
+         Ext.EventManager.onWindowResize(mainView.doLayout, mainView);
+          Ext.EventManager.onWindowResize(treepanel.doLayout, treepanel);
+         Ext.EventManager.onWindowResize(searchPanel.doLayout, searchPanel);
+  
+        });
+    </script>
+</head>
+<body>
+<div><img src="../images/logo.png"></div>
+<div id="menu"></div>
+<div id="body" style="margin : 0 auto;width:100%;"> 
+<div id="left" style="float:left;width:15%;"></div>
+<div id="right" style="float:left;width :85% "></div>
+</div>
+</body>
+ 
+</html>

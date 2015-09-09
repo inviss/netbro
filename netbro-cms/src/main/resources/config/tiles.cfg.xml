@@ -1,0 +1,160 @@
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"  "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition name="login" template="/WEB-INF/login.ftl">
+
+	</definition>
+
+
+	<!-- user -->
+	<definition name=".user" template="/WEB-INF/layout/user/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+		<put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+		<put-attribute name="right" value="/WEB-INF/layout/user/right.ftl" />
+		<put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+	</definition>
+
+	<!-- work -->
+	<definition name=".work" template="/WEB-INF/layout/user/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+		<put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+		<put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+	</definition>
+
+	<!-- statistic -->
+	<definition name=".statistic" template="/WEB-INF/layout/user/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+		<put-attribute name="header"
+			value="/WEB-INF/layout/user/header.ftl" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layout/user/footer.ftl" />
+
+	</definition>
+
+	<!-- statistic popup -->
+	<definition name=".popup"
+		template="/WEB-INF/layout/statistic/popup/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+	</definition>
+
+	<!-- admin -->
+	<definition name=".admin" template="/WEB-INF/layout/user/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+		<put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+		<put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+	</definition>
+
+	<!-- contetns -->
+	<definition name=".contents" template="/WEB-INF/layout/user/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+		<put-attribute name="header"
+			value="/WEB-INF/layout/user/header.ftl" />
+		<put-attribute name="right" value="/WEB-INF/layout/contents/right.ftl" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layout/user/footer.ftl" />
+	</definition>
+
+
+	<!-- monitoring -->
+	<definition name=".monitoring" template="/WEB-INF/layout/user/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+		<put-attribute name="header"
+			value="/WEB-INF/layout/user/header.ftl" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layout/user/footer.ftl" />
+	</definition>
+
+
+
+	<!-- blank -->
+	<definition name=".blank" template="/WEB-INF/layout/blank/default.ftl">
+		<put-attribute name="title" value="Media Manager" />
+	</definition>
+
+
+	<definition name="web/*" extends=".user">
+		<put-attribute name="body" value="/WEB-INF/views/web/{1}.ftl" />
+	</definition>
+
+	<definition name="clip/*" extends=".user">
+		<put-attribute name="body" value="/WEB-INF/views/clip/{1}.ftl" />
+	</definition>
+
+	<definition name="admin/category/*" extends=".admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/category/{1}.ftl" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/category/left.ftl" />
+	</definition>
+
+	<definition name="admin/user/*" extends=".admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/user/{1}.ftl" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/user/right.ftl" />
+	</definition>
+
+	<definition name="admin/auth/*" extends=".admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/auth/{1}.ftl" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/auth/right.ftl" />
+	</definition>
+
+	<definition name="admin/code/*" extends=".admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/code/{1}.ftl" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/code/right.ftl" />
+	</definition>
+
+<definition name="admin/notice/*" extends=".admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/notice/{1}.ftl" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/notice/right.ftl" />
+	</definition>
+
+	<definition name="admin/monitoring/*" extends=".monitoring">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/monitoring/{1}.ftl" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/monitoring/right.ftl" />
+	</definition>
+
+	<definition name="admin/equipment/*" extends=".admin">
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/equipment/{1}.ftl" />
+		<put-attribute name="left"
+			value="/WEB-INF/views/admin/equipment/right.ftl" />
+	</definition>
+	
+	
+
+
+
+
+	<!-- implement contents ============ -->
+	<definition name="contents/*" extends=".contents">
+		<put-attribute name="body" value="/WEB-INF/views/contents/{1}.ftl" />
+	</definition>
+
+
+	<definition name="work/tra/*" extends=".work">
+		<put-attribute name="body" value="/WEB-INF/views/work/tra/{1}.ftl" />
+		<put-attribute name="right" value="" />
+	</definition>
+
+	<definition name="work/trs/*" extends=".work">
+		<put-attribute name="body" value="/WEB-INF/views/work/trs/{1}.ftl" />
+		<put-attribute name="left" value="/WEB-INF/views/work/trs/right.ftl" />
+	</definition>
+
+	<definition name="statistic/*" extends=".statistic">
+		<put-attribute name="body"
+			value="/WEB-INF/views/statistic/search.ftl" />
+	</definition>
+
+	<definition name="statistic/popup/*" extends=".popup">
+		<put-attribute name="body"
+			value="/WEB-INF/views/statistic/popup/detail.ftl" />
+	</definition>
+
+
+</tiles-definitions>

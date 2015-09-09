@@ -1,0 +1,127 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="no">
+<head>
+	<title>Ext.ux.window.Notification - Examples and documentation</title>
+
+	<!-- For testing purposes only. Do not copy.
+	<link href="http://extjs.cachefly.net/ext-4.0.2/resources/css/ext-all.css" rel="stylesheet" />
+	<script src="http://extjs.cachefly.net/ext-4.0.2/ext-all.js"></script>
+
+	<link href="http://cdn.sencha.io/ext-4.0.7-gpl/resources/css/ext-all.css" rel="stylesheet" />
+	<script src="http://cdn.sencha.io/ext-4.0.7-gpl/ext-all.js"></script>
+
+	<link href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css" rel="stylesheet" />
+	<link href="http://cdn.sencha.io/ext/gpl/4.2.0/resources/css/ext-all-neptune.css" rel="stylesheet" />
+	<script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
+
+	<link href="http://cdn.sencha.com/ext/gpl/4.2.1/resources/css/ext-all.css" rel="stylesheet" />
+	<link href="http://cdn.sencha.io/ext/gpl/4.2.1/resources/css/ext-all-neptune.css" rel="stylesheet" />
+	<script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"></script>
+	End: Do not copy -->
+
+	<link href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css" rel="stylesheet" />
+	<script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
+	<script type="text/javascript" src="../extjs/src/ux/window/Notification.js"></script>
+
+	<style type="text/css">
+
+		#instructions ul li {
+			list-style-type:disc;
+			list-style-position:outside;
+			font-size:12px;
+			margin:0px 0px 0px 20px;
+		}
+
+		/* Icons */
+		.ux-notification-icon-information {
+			background-image: url('../images/icon16_info.png');
+		}
+
+		.ux-notification-icon-error {
+			background-image: url('../images/icon16_error.png');
+		}
+
+
+		/* Using standard theme */
+		.ux-notification-window .x-window-body {
+			text-align: center;
+		padding: 15px 5px 15px 5px;
+		}
+
+
+		/* Custom styling */
+		.ux-notification-light .x-window-header {
+			background-color: transparent;
+		}
+
+		body .ux-notification-light {
+			background-image: url('../images/fader.png');
+		}
+
+		.ux-notification-light .x-window-body {
+			text-align: center;
+			padding: 15px 5px 20px 5px;
+			background-color: transparent;
+			border: 0px solid white;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+
+		// Required when using ext-all.js
+		Ext.Loader.setConfig({
+			enabled: true
+		});
+
+		var reusable = null;
+
+ Ext.onReady(function() {
+  Ext.create('Ext.panel.Panel',{
+  		layout : 'hbox'
+  		,width : 500
+  		,height : 500
+  		,renderTo : 'sample'
+  		,items : [{
+  		 	xtype : 'button'
+  		 	,text : 'show'
+  		 	,handler: function () {
+										Ext.create('widget.uxNotification', {
+												title: 'Notification',
+												position: 'br',
+												manager: 'instructions',
+												cls: 'ux-notification-light',
+												iconCls: 'ux-notification-icon-information',
+												html: 'Using bounceOut/easeIn animation effect.',
+												autoCloseDelay: 4000,
+												slideBackDuration: 500,
+												slideInAnimation: 'bounceOut',
+												slideBackAnimation: 'easeIn'
+											}).show();
+											Ext.create('widget.uxNotification', {
+												title: 'Notification',
+												position: 'br',
+												manager: 'instructions',
+												cls: 'ux-notification-light',
+												iconCls: 'ux-notification-icon-information',
+												html: 'Using bounceOut/easeIn animation effect.',
+												slideBackDuration: 500,
+												slideInAnimation: 'bounceOut',
+												slideBackAnimation: 'easeIn'
+											}).show();
+									}
+  		}]
+  });
+ });
+		
+		
+	</script>
+
+</head>
+<body>
+
+<div id = "sample"></div>
+
+</body>
+</html>

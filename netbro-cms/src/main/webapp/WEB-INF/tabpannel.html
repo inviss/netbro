@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>Extjs sample</title>
+    <link rel="stylesheet" type="text/css" href="../extjs/resources/css/ext-all.css" /> 
+    <script type="text/javascript" src="../extjs/ext-all-debug.js"></script>
+
+    <script type="text/javascript">
+
+        Ext.onReady(function() {
+       var tabs = Ext.create('Ext.tab.Panel', {
+       height : 300,
+    items: [
+        {
+            title: 'Tab 1',
+            html : 'A simple tab'
+        }
+    ],
+    renderTo : 'demoTab'
+});
+
+var video = new Ext.panel.Panel({
+title : '영상'
+})
+
+var baseInfo = new Ext.panel.Panel({
+title :'기본정보'
+})
+
+var total = Ext.create('Ext.panel.Panel',{
+xtype : 'hbox',
+items : [{
+title : '영상'},{title : '기본정보'}]
+})
+
+Ext.create('Ext.button.Button', {
+    text    : 'New tab',
+    scope   : this,
+    handler : function() {
+    var testpanel = Ext.create('Ext.form.Panel',{
+ 
+items : [{
+title : '영상',
+xtype : 'textfield',
+fieldLabel : 'name',
+name : 'name'
+}]
+})
+        var tab = tabs.add({
+            // we use the tabs.items property to get the length of current items/tabs
+            title: 'Tab ' + (tabs.items.length + 1),
+            id  : (tabs.items.length + 1) ,
+            closable : true,
+            height : 100,
+        items: [{
+        xtype: 'panel',
+        title: 'Tab 1'
+    },
+    {
+        title: 'Tab 2',
+        xtype: 'container',
+        hideMode: 'offsets',
+        layout: {
+            type: 'hbox',
+            align: 'stretch'
+        },
+        items: [{
+           title : 'dd',
+           width : '40%'
+        },
+        {
+          title :'ff',
+          width : '60%'
+        }]
+    }]
+        });
+tab.show();
+  
+
+
+        tabs.setActiveTab(tab);
+        
+        
+    },
+    
+ renderTo :'demoTab'
+});
+        });
+    </script>
+</head>
+<body>
+<div id="demoTab"></div>
+</div>
+</body>
+ 
+</html>

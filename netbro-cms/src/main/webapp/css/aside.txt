@@ -1,0 +1,27 @@
+    <section class="aside">
+        <h3 class="blind">고정 정보</h3>
+        <article class="bgblack radius1 title"><span>작업 현황</span></article>
+        <article class="bbsview2">
+        <table class="boardview">
+        <colgroup><col width="140px"></col><col></col></colgroup>
+        <tr><th>1TV ENCODER</th><td><img src="images/icon_busy.gif" title="busy"/></td></tr>
+        <tr><th>2TV ENCODER</th><td><img src="images/icon_wait.gif" title="wait"/></td></tr>
+        <tr><th>Back Encoder</th><td><img src="images/icon_wait.gif" title="wait"/></td></tr>
+        <!-- 구분여백 --><tr><td colspan="2" class="line"></td></tr>
+        <tr><th>Trimmer(1번)</th><td><img src="images/icon_wait.gif" title="wait"/></td></tr>
+        <tr><th>Trimmer(2번)</th><td><img src="images/icon_wait.gif" title="wait"/></td></tr>
+        </table>
+        </article>
+        <article class="bgblack radius1 title"><span>스토리지 정보</span></article>
+        <article class="box1">
+            <article class="ly_loading">
+            <p class="dsc_loading_no">
+            <span class="progress">
+            <em>29</em>%</span>
+            </p>
+            <article class="loading_bar">
+            <span style="width:29%;"></span>
+            </article>
+            </article>
+        </article>
+    </section>
