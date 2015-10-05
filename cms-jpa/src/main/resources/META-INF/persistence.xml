@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
+	
+	
+	<persistence-unit name="netbro_db2" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<properties>
+			<property name="javax.persistence.target-database" value="db2" />
+			<!--  
+			<property name="javax.persistence.jdbc.driver" value="com.ibm.db2.jcc.DB2Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:db2://14.36.147.34:50000/cms" />
+			<property name="javax.persistence.jdbc.user" value="cms" />
+			<property name="javax.persistence.jdbc.password" value="cms" />
+			-->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.DB2Dialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" />
+         	<property name="hibernate.cache.use_second_level_cache" value="true" />
+         	<property name="hibernate.cache.use_query_cache" value="true" />
+         	<property name="net.sf.ehcache.configurationResourceName" value="/ehcache.xml" />
+         	<property name="hibernate.generate_statistics" value="true" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="netbro_oracle" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<properties>
+			<property name="javax.persistence.target-database" value="oracle" />
+			<!--  
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@14.36.147.34:1521:d2net" />
+			<property name="javax.persistence.jdbc.user" value="cms" />
+			<property name="javax.persistence.jdbc.password" value="cms" />
+			-->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" />
+         	<property name="hibernate.cache.use_second_level_cache" value="true" />
+         	<property name="hibernate.cache.use_query_cache" value="true" />
+         	<property name="net.sf.ehcache.configurationResourceName" value="/ehcache.xml" />
+         	<property name="hibernate.generate_statistics" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="netbro_hsql" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<properties>
+			<property name="javax.persistence.target-database" value="hsql" />
+			<!--  -->
+			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:mem:aname" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" />
+         	<property name="hibernate.cache.use_second_level_cache" value="true" />
+         	<property name="hibernate.cache.use_query_cache" value="true" />
+         	<property name="net.sf.ehcache.configurationResourceName" value="/ehcache.xml" />
+         	<property name="hibernate.generate_statistics" value="true" />
+		</properties>
+	</persistence-unit>
+	
+</persistence>

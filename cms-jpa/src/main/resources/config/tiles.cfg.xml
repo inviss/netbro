@@ -1,0 +1,189 @@
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"  "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+  <!-- clip -->
+    <definition name=".clip" template="/WEB-INF/layout/clip/default.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+
+        <put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+    </definition>
+    <!-- user -->
+    <definition name=".user" template="/WEB-INF/layout/user/default.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+
+        <put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+    </definition>
+
+
+    <!-- statistic -->
+    <definition name=".statistic" template="/WEB-INF/layout/user/default.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+
+        <put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+    </definition>
+    <!-- contents -->
+    <definition name=".contents" template="/WEB-INF/layout/user/default.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+
+        <put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+    </definition>
+    <!-- admin -->
+    <definition name=".admin" template="/WEB-INF/layout/admin/default.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+        <!--<put-attribute name="right" value="/WEB-INF/layout/admin/right.ftl" 
+			/> -->
+        <put-attribute name="footer" value="/WEB-INF/layout/admin/footer.ftl" />
+    </definition>
+    <!-- monitoring -->
+    <definition name=".monitor" template="/WEB-INF/layout/monitor/default.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+        <put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+    </definition>
+    
+    <!--work-->
+    <definition name=".work" template="/WEB-INF/layout/user/default.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="/WEB-INF/layout/user/header.ftl" />
+        <put-attribute name="footer" value="/WEB-INF/layout/user/footer.ftl" />
+    </definition>
+
+    <!-- login -->
+    <definition name=".login" template="/WEB-INF/views/login.ftl">
+        <put-attribute name="title" value="Media Manager" />
+        <put-attribute name="header" value="" />
+        <put-attribute name="left" value="" />
+        <put-attribute name="footer" value="" />
+    </definition>
+
+    <definition name="*" extends=".login">
+        <put-attribute name="body" value="/WEB-INF/{1}.ftl" />
+    </definition>
+
+    <definition name="web/*" extends=".user">
+        <put-attribute name="body" value="/WEB-INF/views/web/{1}.ftl" />
+    </definition>
+
+    <!-- clip -->
+    <definition name="clip/*" extends=".clip">
+        <!-- <put-attribute name="left" value="/WEB-INF/views/clip/left.ftl" /> -->
+        <put-attribute name="top" value="/WEB-INF/views/clip/top.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/clip/search.ftl" />
+    </definition>
+    <!-- statistic -->
+    <definition name="statistic/*" extends=".statistic">
+        <put-attribute name="left" value="/WEB-INF/views/statistic/left.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/statistic/search.ftl" />
+    </definition>
+     <!-- statistic -->
+    <definition name="statistic/year/*" extends=".statistic">
+        <put-attribute name="left" value="/WEB-INF/views/statistic/year/left.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/statistic/year/search.ftl" />
+    </definition>
+    <!--admin -->
+    <definition name="admin/category/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/category/category.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/category/right.ftl" />
+    </definition>
+
+    <!--user -->
+    <definition name="admin/user/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/user/user.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/user/right.ftl" />
+    </definition>
+
+    <!--auth -->
+    <definition name="admin/auth/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/auth/auth.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/auth/right.ftl" />
+    </definition>
+
+    <!--equip -->
+    <definition name="admin/equipment/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/equipment/equipment.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/equipment/right.ftl" />
+    </definition>
+
+    <!--profile -->
+    <definition name="admin/profile/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/profile/profile.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/profile/right.ftl" />
+    </definition>
+
+    <!--profile -->
+    <definition name="admin/profile/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/profile/profile.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/profile/right.ftl" />
+    </definition>
+
+    <!--busiPartner -->
+    <definition name="admin/busipartner/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/busipartner/busipartner.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/busipartner/right.ftl" />
+    </definition>
+    
+    <!--busiCategory -->
+    <definition name="admin/busicategory/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/busicategory/busicategory.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/busicategory/right.ftl" />
+    </definition>
+    
+    <!--notice -->
+    <definition name="admin/notice/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/notice/notice.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/notice/right.ftl" />
+    </definition>
+    
+    <!--code-->
+    <definition name="admin/code/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/code/code.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/code/right.ftl" />
+    </definition>
+    
+    <!--storage-->
+    <definition name="admin/storage/*" extends=".admin">
+        <put-attribute name="body" value="/WEB-INF/views/admin/storage/storage.ftl" />
+        <put-attribute name="right" value="/WEB-INF/views/admin/storage/right.ftl" />
+    </definition>
+
+
+    <!--contents arrange -->
+    <definition name="contents/arrange/*" extends=".user">
+        <put-attribute name="left" value="/WEB-INF/views/contents/arrange/left.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/contents/arrange/search.ftl" />
+    </definition>
+    
+    <!--contents discard-->
+    <definition name="contents/discard/*" extends=".user">
+        <put-attribute name="left" value="/WEB-INF/views/contents/discard/left.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/contents/discard/search.ftl" />
+    </definition>
+    
+    <!--contents archive-->
+    <definition name="contents/archive/*" extends=".user">
+        <put-attribute name="left" value="/WEB-INF/views/contents/archive/left.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/contents/archive/search.ftl" />
+    </definition>
+    
+    <!--monitor -->
+    <definition name="monitor/*" extends=".monitor">
+        <put-attribute name="body" value="/WEB-INF/views/monitor/search.ftl" />
+    </definition>
+    
+    
+    <!--tra -->
+    <definition name="work/tra/*" extends=".work">
+    	<put-attribute name="left" value="/WEB-INF/views/work/tra/left.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/work/tra/tra.ftl" />
+    </definition>
+    
+    <!--trs -->
+    <definition name="work/trs/*" extends=".work">
+        <put-attribute name="left" value="/WEB-INF/views/work/trs/left.ftl" />
+        <put-attribute name="body" value="/WEB-INF/views/work/trs/trs.ftl" />
+    </definition>
+</tiles-definitions>
