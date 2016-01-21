@@ -86,12 +86,13 @@ public class PersistenceTests extends BaseDaoConfig{
 		CategoryTbl  category = new CategoryTbl();
 		category.setCategoryNm(cateNm);
 		category.setDepth(depth);
-		 category.setNodes(node);
+		category.setNodes(node);
 		category.setOrderNum(order);
 		
 		  try {
 			//categoryService.insertCategory(category);
 			categoryServices.saveCategory(category);
+			System.out.println("category_nm: "+cateNm+", category_id: "+category.getCategoryId());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,10 +103,12 @@ public class PersistenceTests extends BaseDaoConfig{
 	@Test
 	//@Transactional
 	public void testOne() {
-		//createCategory("SBS", 0, "1", 1);
-	 //	createCategory("TVN", 0, "2", 2);
-	 // 	createCategory("MBC", 0, "3", 3);
-		 categoryTest();
+		/*
+		createCategory("SBS", 0, "1", 1);
+	 	createCategory("TVN", 0, "2", 2);
+	  	createCategory("MBC", 0, "3", 3);
+	  	*/
+		categoryTest(161);
 	}
 	
 	@Ignore
@@ -281,9 +284,9 @@ public class PersistenceTests extends BaseDaoConfig{
 	
 //	@Test
 //	 @Ignore
-	public void categoryTest(){ 
+	public void categoryTest(Integer categoryId){ 
 		Category category = new Category();
-		category.setCategoryId(145); 
+		category.setCategoryId(categoryId); 
 		try {
 			String result = categoryService.deleteCategory(category);
 			System.out.println("result : "+result);

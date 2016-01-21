@@ -173,25 +173,24 @@ public class CategoryServiceImpl implements CategoryService {
 	@Transactional(propagation=Propagation.SUPPORTS)
 	public String deleteCategory(Category category) throws ServiceException {
 
-		String message="";
 		Search search = new Search();
 		search.setCategoryId(category.getCategoryId());
 		//삭제하고자하는 카테고리의 정보를 조회한다.
-		CategoryTbl info = categoryDao.getCategoryObj(search);
+		CategoryTbl categoryTbl = categoryDao.getCategoryObj(search);
 		CategoryTbl preParentsInfo = new CategoryTbl();
 
 		//삭제하고자하는 카테고리가  최상위 노드라면 자신을 부모 카테고리에 집어놓고 아니라면 부모노드의 정보를 조회한다
-		if(info != null){
-			if(info.getPreParent() != null){
+		if(categoryTbl != null){
+			if(categoryTbl.getPreParent() != null){
 				search = new Search();
-				search.setCategoryId(info.getPreParent());
+				search.setCategoryId(categoryTbl.getPreParent());
 				preParentsInfo = categoryDao.getCategoryObj(search);
 			}else{
-				preParentsInfo = info;
+				preParentsInfo = categoryTbl;
 			}
 
 			search = new Search();
-			search.setNodes(info.getNodes());
+			search.setNodes(categoryTbl.getNodes());
 
 			List<CategoryTbl> infos = categoryDao.findCategories(search);
 
@@ -203,7 +202,7 @@ public class CategoryServiceImpl implements CategoryService {
 				}else{
 					//2014.07.15 삭제하고자하는 카테고리ID가 컨텐츠로 등록된 적이 없다면 에피소드까지 삭제 가능하도록 변경
 					search = new Search();
-					search.setCategoryId(info.getCategoryId());
+					search.setCategoryId(categoryTbl.getCategoryId());
 					List<EpisodeTbl> deleteEpisodes = episodeDao.findEpisodeInfoList(search);
 
 					//검색된 에피소드의 정보를 모두 삭제 처리한다.
@@ -214,7 +213,7 @@ public class CategoryServiceImpl implements CategoryService {
 					}
 
 					//하위노드가 없다면 해당 카테고리를 삭제하고 동일 깊이에 있고
-					categoryDao.delete(info);
+					categoryDao.delete(categoryTbl);
 
 					return "Y";
 				}
