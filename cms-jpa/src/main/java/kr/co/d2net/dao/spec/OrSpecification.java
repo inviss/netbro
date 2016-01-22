@@ -49,8 +49,7 @@ public class OrSpecification<T> extends AbstractSpecification<T> {
 	@Override
 	public Predicate toPredicate(final CriteriaBuilder cb,
 			final CriteriaQuery<?> cq, final Root<T> root) {
-		return cb.or(specification1.toPredicate(cb, cq, root),
-				specification2.toPredicate(cb, cq, root));
+		return cb.or(specification1.toPredicate(cb, cq, root), specification2.toPredicate(cb, cq, root));
 	}
 
 }
