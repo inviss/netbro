@@ -60,14 +60,14 @@ public class FileUtils {
 
 	public static String byteCountToDisplaySize(long size) {
 		String displaySize;
-		if (size / 1073741824L > 0L) {
-			displaySize = String.valueOf(size / 1073741824L) + " GB";
+		if (size / ONE_GB > 0L) {
+			displaySize = String.valueOf(size / ONE_GB) + " GB";
 		} else {
-			if (size / 1048576L > 0L) {
-				displaySize = String.valueOf(size / 1048576L) + " MB";
+			if (size / ONE_MB > 0L) {
+				displaySize = String.valueOf(size / ONE_MB) + " MB";
 			} else {
-				if (size / 1024L > 0L)
-					displaySize = String.valueOf(size / 1024L) + " KB";
+				if (size / ONE_KB > 0L)
+					displaySize = String.valueOf(size / ONE_KB) + " KB";
 				else
 					displaySize = String.valueOf(size) + " bytes";
 			}
