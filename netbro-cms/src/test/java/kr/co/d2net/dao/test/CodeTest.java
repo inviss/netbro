@@ -42,27 +42,29 @@ public class CodeTest extends BaseDaoConfig {
 		}
 	}
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void InsertTest() {
 		try {
 			//codeServices.insertCodeInfo("테스트");
-			//CodeTbl code = new CodeTbl();
-			//code.
-			//codeServices.insertCodeInfo(code);
+			CodeTbl code = new CodeTbl();
+			code.getId().setClfCD("aaa");
+			code.getId().setSclCd("bbb");
+			code.setClfNM("dfsddsf");
+			codeServices.insertCodeInfo(code);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void getInfoTest() {
 		try {
 			CodeTbl code = new CodeTbl();
 			CodeId id = new CodeId();
-			id.setClfCD("U001");
-			id.setSclCd("001");
+			id.setClfCD("aaa");
+			id.setSclCd("bbb");
 			code.setId(id);
 			CodeTbl info = codeServices.getCodeInfo(code);
 			System.out.println("#####clfcd "+info.getId().getClfCD());
@@ -75,7 +77,7 @@ public class CodeTest extends BaseDaoConfig {
 	}
 	
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void getClfList() {
 		try {
@@ -110,7 +112,7 @@ public class CodeTest extends BaseDaoConfig {
 		}
 	}
 	
-	
+	@Ignore
 	@Test
 	public void getSclCd() {
 		
