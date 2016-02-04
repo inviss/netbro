@@ -50,7 +50,7 @@ public class RestfulService {
 	
 	@GET
 	@Path("/web/{id}")
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON+";charset=UTF-8", MediaType.APPLICATION_XML+";charset=UTF-8"})
 	public WebRoot getWebRoot(@PathParam("id") String id) {
 		WebRoot root = new WebRoot();
 		root.setVersion("1.1");
