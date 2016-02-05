@@ -32,6 +32,11 @@
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class> 
 	</listener>
 	
+	<!--  application listener -->
+	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+	
 	<filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -89,6 +94,7 @@
 			<param-value>classpath:/spring/spring.mvc.xml</param-value> 
 		</init-param>
         <load-on-startup>10</load-on-startup>
+        <async-supported>true</async-supported>
     </servlet>
 	
 	<context-param>
@@ -99,10 +105,7 @@
         </param-value>
     </context-param>
 	
-	<!--  application listener -->
-	<listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+	
 	
 	<servlet-mapping>
         <servlet-name>springDispatcher</servlet-name>
