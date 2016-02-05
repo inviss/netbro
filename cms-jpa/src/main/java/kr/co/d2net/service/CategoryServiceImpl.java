@@ -180,7 +180,7 @@ public class CategoryServiceImpl implements CategoryService {
 		CategoryTbl preParentsInfo = new CategoryTbl();
 
 		//삭제하고자하는 카테고리가  최상위 노드라면 자신을 부모 카테고리에 집어놓고 아니라면 부모노드의 정보를 조회한다
-		if(categoryTbl != null){
+		if(categoryTbl != null) {
 			if(categoryTbl.getPreParent() != null){
 				search = new Search();
 				search.setCategoryId(categoryTbl.getPreParent());

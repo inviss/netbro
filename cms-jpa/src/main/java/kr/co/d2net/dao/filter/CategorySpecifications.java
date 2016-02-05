@@ -1,5 +1,8 @@
 package kr.co.d2net.dao.filter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
@@ -34,57 +37,64 @@ public class CategorySpecifications {
 			@Override
 			public Predicate toPredicate(CriteriaBuilder cb, CriteriaQuery<?> cq, Root<CategoryTbl> root) {
 
+				List<Predicate> predicates = new ArrayList<Predicate>();
+				
 				// category_id
-				Predicate p1 = cb.conjunction();
+				Predicate predicate = null;
+				//Predicate p1 = cb.conjunction();
 				if(search.getCategoryId() != null && search.getCategoryId() > 0) {
 					if(logger.isDebugEnabled()) {
 						logger.debug("Category[category_id]: "+search.getCategoryId());
 					}
-				 	p1 = cb.and(subListByParent(cb, root, search.getCategoryId()));
+					predicate = cb.and(subListByParent(cb, root, search.getCategoryId()));
+					predicates.add(predicate);
 				}
 
 				// depth
-				Predicate p2 = cb.conjunction();
+				//Predicate p2 = cb.conjunction();
 				if(search.getDepth() != null && search.getDepth() > -1) {
 					if(logger.isDebugEnabled()) {
 						logger.debug("Category[depth]: "+search.getDepth());
 					}
-					 p2 = cb.and(subListByDepth(cb, root, search.getDepth()));
+					predicate = cb.and(subListByDepth(cb, root, search.getDepth()));
+					predicates.add(predicate);
 				}
 
 				// nodes
-				Predicate p3 = cb.conjunction();
+				//Predicate p3 = cb.conjunction();
 				if(StringUtils.isNotBlank(search.getNodes())) {
 					if(logger.isDebugEnabled()) {
 						logger.debug("Category[node]: "+search.getNodes());
 					}
-					  p3 = cb.and(nodeLikes(cb, root, search.getNodes()));
+					predicate = cb.and(nodeLikes(cb, root, search.getNodes()));
+					predicates.add(predicate);
 				}
 
+				// orderNum
+				//Predicate p4 = cb.conjunction();
+				if(search.getOrderNum() != null && search.getOrderNum() > 0) {
+					if(logger.isDebugEnabled()) {
+						logger.debug("Category[orderNum]: "+search.getOrderNum());
+					}
+					predicate = cb.and(orderNumGreatThan(cb, root, search.getOrderNum()));
+					predicates.add(predicate);
+				}
+				
 				// use_yn
-				Predicate p4 = cb.conjunction();
+				//Predicate p5 = cb.conjunction();
 				String useYn = StringUtils.defaultIfBlank(search.getUseYn(), "Y");
 				if(logger.isDebugEnabled()) {
 					logger.debug("Category[use_yn]: "+useYn);
 				}
-					p4 = cb.and(useYn(cb, root, useYn));
+				predicate = cb.and(useYn(cb, root, useYn));
+				predicates.add(predicate);
 
-				// orderNum
-				Predicate p5 = cb.conjunction();
-				if(search.getOrderNum() != null) {
-					if(logger.isDebugEnabled()) {
-						logger.debug("Category[orderNum]: "+search.getOrderNum());
-					}
-			 	p5 = cb.and(orderNumGreatThan(cb, root, search.getOrderNum()));
-				}
-
-				
 				if(search.getOperator() == Operator.LIST) {
 					Path<Integer> order = root.get(CategoryTbl_.orderNum);
 					cq.orderBy(cb.asc(order));
 				}
 
-				return cb.and(p1, p2, p3, p4, p5);
+				return cb.and((Predicate[])predicates.toArray());
 			}
 		};
 	}

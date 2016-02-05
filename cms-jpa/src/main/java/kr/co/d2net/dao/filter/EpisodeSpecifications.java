@@ -1,5 +1,8 @@
 package kr.co.d2net.dao.filter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
@@ -34,22 +37,27 @@ private final static Logger logger = LoggerFactory.getLogger(EpisodeSpecificatio
 			@Override
 			public Predicate toPredicate(CriteriaBuilder cb, CriteriaQuery<?> cq, Root<EpisodeTbl> root) {
 
+				List<Predicate> predicates = new ArrayList<Predicate>();
+				
+				Predicate predicate = null;
 				// category_id
-				Predicate p1 = cb.conjunction();
+				//Predicate p1 = cb.conjunction();
 				if(search.getCategoryId() != null && search.getCategoryId() > 0) {
 					if(logger.isDebugEnabled()) {
 						logger.debug("Episode[category_id]: "+search.getCategoryId());
 					}
-					p1 = cb.and(categoryEquals(cb, root, search.getCategoryId()));
+					predicate = cb.and(categoryEquals(cb, root, search.getCategoryId()));
+					predicates.add(predicate);
 				}
 
 				// episode_nm like
-				Predicate p2 = cb.conjunction();
-				if(search.getKeyword() != null && StringUtils.isNotBlank(search.getKeyword())) {
+				//Predicate p2 = cb.conjunction();
+				if(StringUtils.isNotBlank(search.getKeyword())) {
 					if(logger.isDebugEnabled()) {
 						logger.debug("Episode[keyword]: "+search.getKeyword());
 					}
-					p2 = cb.and(episodeNmLikes(cb, root, search.getKeyword()));
+					predicate = cb.and(episodeNmLikes(cb, root, search.getKeyword()));
+					predicates.add(predicate);
 				}
 
 				 
@@ -57,7 +65,7 @@ private final static Logger logger = LoggerFactory.getLogger(EpisodeSpecificatio
 					cq.orderBy(cb.asc(root.get(EpisodeTbl_.episodeId)));
 				}
 
-				return cb.and(p1, p2 );
+				return cb.and((Predicate[])predicates.toArray());
 			}
 		};
 	}

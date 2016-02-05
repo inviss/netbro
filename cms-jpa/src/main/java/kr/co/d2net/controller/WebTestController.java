@@ -12,8 +12,19 @@ public class WebTestController {
 	
 	final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@RequestMapping(value="/web/oktest.ssc", method = RequestMethod.GET)
-	public ModelMap editList(ModelMap map) {
+	@RequestMapping(value="/hello", method = RequestMethod.GET)
+	public ModelMap hello(ModelMap map) {
+		
+		try {
+		} catch (Exception e) {
+			logger.error("editList Error", e);
+		}
+		
+		return map;
+	}
+	
+	@RequestMapping(value="/world", method = RequestMethod.GET)
+	public ModelMap world(ModelMap map) {
 		
 		try {
 		} catch (Exception e) {

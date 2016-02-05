@@ -61,18 +61,18 @@ public class PersistenceTests extends BaseDaoConfig{
 	private ContentService contentService;
 	@Autowired
 	private CategoryService categoryService; 
-	
+
 	@Autowired
 	private CategoryDao categoryDao; 
-	
+
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	private EntityManagerFactory factory;
 	private EntityManager em;
 	private EntityTransaction tx;
 	private Repository repository;
-	
+
 	/*
 	@BeforeClass
 	public static void before() {
@@ -80,16 +80,16 @@ public class PersistenceTests extends BaseDaoConfig{
 		createCategory("bbb", 0, "2", 2);
 		createCategory("ccc", 0, "3", 3);
 	}
-	*/
-	
+	 */
+
 	private void createCategory(String cateNm, Integer depth, String node, Integer order) {
 		CategoryTbl  category = new CategoryTbl();
 		category.setCategoryNm(cateNm);
 		category.setDepth(depth);
 		category.setNodes(node);
 		category.setOrderNum(order);
-		
-		  try {
+
+		try {
 			//categoryService.insertCategory(category);
 			categoryServices.saveCategory(category);
 			System.out.println("category_nm: "+cateNm+", category_id: "+category.getCategoryId());
@@ -99,49 +99,49 @@ public class PersistenceTests extends BaseDaoConfig{
 		}
 	}
 
-	//  @Ignore
+	//@Ignore
 	@Test
 	//@Transactional
 	public void testOne() {
-		/*
+
 		createCategory("SBS", 0, "1", 1);
-	 	createCategory("TVN", 0, "2", 2);
-	  	createCategory("MBC", 0, "3", 3);
-	  	*/
-		categoryTest(161);
+		createCategory("TVN", 0, "2", 2);
+		createCategory("MBC", 0, "3", 3);
+
+		//categoryTest(162);
 	}
-	
-	@Ignore
+
+	//@Ignore
 	@Test
 	public void findCategories() {
 		factory = Persistence.createEntityManagerFactory("netbro_hsql");
 		em = factory.createEntityManager();
 		repository = new JpaRepository(em);
-		
+
 		Specification<CategoryTbl> depth0 = SpecificationBuilder.forProperty("depth").equal(0).build();
 		Assert.assertEquals(3, repository.count(CategoryTbl.class, depth0));
 		List<CategoryTbl> categoryTbls = repository.find(CategoryTbl.class, depth0).list();
-		
+
 		tx = em.getTransaction();
 		tx.begin();
 		for(CategoryTbl categoryTbl : categoryTbls) {
 			System.out.println("findCategories >>>> category_id: "+categoryTbl.getCategoryId()+", category_nm: "+categoryTbl.getCategoryNm());
-			
+
 			EpisodeTbl episodeTbl = new EpisodeTbl();
 			episodeTbl.setCategoryId(categoryTbl.getCategoryId());
 			episodeTbl.setEpisodeId(1);
 			episodeTbl.setEpisodeNm("aa_1");
 			//episodeTbl.setCategoryTbl(categoryTbl);
-			
+
 			categoryTbl.addEpisodeTbl(episodeTbl);
-			
+
 			repository.update(categoryTbl);
-			
+
 			System.out.println("update category_id: "+categoryTbl.getCategoryId()+", category_nm: "+categoryTbl.getCategoryNm()+", depth: "+categoryTbl.getDepth());
 		}
 		tx.commit();
 	}
-	
+
 	@Ignore
 	@Test
 	public void findContents() {
@@ -150,140 +150,139 @@ public class PersistenceTests extends BaseDaoConfig{
 		archiveTbl = repository.find(ArchiveTbl.class,"001");
 		System.out.println("archiveTbl.getWorkStatCd() : " + archiveTbl.getWorkStatCd());
 	}
-	
-	
+
+
 	@Test
 	@Ignore
 	public void contentsInstSaveTest(){
-		 ContentsInstTbl contentsInstTbl = new ContentsInstTbl();
-			contentsInstTbl.setCtiFmt("101");
-			contentsInstTbl.setUseYn(UseEnum.Y);
-			contentsInstTbl.setBitRt("29.97");
-			contentsInstTbl.setFlSz(1234l);
-			contentsInstTbl.setOrgFileNm("1234");
+		ContentsInstTbl contentsInstTbl = new ContentsInstTbl();
+		contentsInstTbl.setCtiFmt("101");
+		contentsInstTbl.setUseYn(UseEnum.Y);
+		contentsInstTbl.setBitRt("29.97");
+		contentsInstTbl.setFlSz(1234l);
+		contentsInstTbl.setOrgFileNm("1234");
 		//	contentsInstTbl.setCtId(23l);
 		//	contentsInstTbl.setCtiId(12l); 
-			 
-				try {
-					contentsInstService.saveContentsInst(contentsInstTbl);
-				} catch (ServiceException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			 
+
+		try {
+			contentsInstService.saveContentsInst(contentsInstTbl);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void contentsInstDeleteTest(){
-		 ContentsInstTbl contentsInstTbl = new ContentsInstTbl();
-			 
-		 	contentsInstTbl.setCtId(23l);
-		
-			 
-				try {
-					contentsInstService.deleteContentsInst(contentsInstTbl);
-				} catch (ServiceException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			 
+		ContentsInstTbl contentsInstTbl = new ContentsInstTbl();
+
+		contentsInstTbl.setCtId(23l);
+
+		try {
+			contentsInstService.deleteContentsInst(contentsInstTbl);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
-	
+
+
 	@Test
 	@Ignore
 	public void contentsInstGetTest(){
-		 ContentsInst contentsInst = new ContentsInst();
-		 contentsInst.setCtId(1l);
-		 contentsInst.setCtiFmt("1");
-			 
-				try {
-					Long count = contentsInstService.countContentsInst(contentsInst);
-					System.out.println("count :  "+ count);
-				} catch (ServiceException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			 
+		ContentsInst contentsInst = new ContentsInst();
+		contentsInst.setCtId(1l);
+		contentsInst.setCtiFmt("1");
+
+		try {
+			Long count = contentsInstService.countContentsInst(contentsInst);
+			System.out.println("count :  "+ count);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void disuseGetTest(){
-	 Search search = new Search();
-				try {
-					search.setCtId(3l);
-					Disuse  disuses = disuseService.getDisuse(search);
-					System.out.println("getCtNm :  "+disuses.getCtNm());
-				} catch (ServiceException e) {
-					e.printStackTrace();
-				}
-			 
+		Search search = new Search();
+		try {
+			search.setCtId(3l);
+			Disuse  disuses = disuseService.getDisuse(search);
+			System.out.println("getCtNm :  "+disuses.getCtNm());
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void NoticeGetTest(){
-	 Search search = new Search();
-				try {
-					search.setNoticeId(1l);
-					List<Notice> notice = noticeService.findNoticeList(search);
-					System.out.println("getCtNm :  "+notice.size());
-				} catch (ServiceException e) {
-					e.printStackTrace();
-				}
-			 
+		Search search = new Search();
+		try {
+			search.setNoticeId(1l);
+			List<Notice> notice = noticeService.findNoticeList(search);
+			System.out.println("getCtNm :  "+notice.size());
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void ContentsModGetTest(){
-	 Search search = new Search();
-				try {
-					search.setCtId(30l);
-					List<Content> notice = contentsModService.findContentsModList(search);
-					 System.out.println("getCtNm :  " );
-				} catch (ServiceException e) {
-					e.printStackTrace();
-				}
-			 
+		Search search = new Search();
+		try {
+			search.setCtId(30l);
+			List<Content> notice = contentsModService.findContentsModList(search);
+			System.out.println("getCtNm :  " );
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void SegMentGetTest(){
-	 Search search = new Search();
-				try {
-					search.setEpisodeId(10);
-					search.setCategoryId(10);
-					List<Segment> notice = segmentService.findSegmentList(search);
-					 System.out.println("getCtNm :  " );
-				} catch (ServiceException e) {
-					e.printStackTrace();
-				}
-			 
+		Search search = new Search();
+		try {
+			search.setEpisodeId(10);
+			search.setCategoryId(10);
+			List<Segment> notice = segmentService.findSegmentList(search);
+			System.out.println("getCtNm :  " );
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void episodeGetTest(){
-	 Search search = new Search();
-	 System.out.println("test 추가요망");
-				try {
-					 
-					search.setCategoryId(10);
-					search.list();
-					 List<Episode> notice = episodeService.findEpisodeList(search);
-					 System.out.println("getCtNm :  " );
-				} catch (ServiceException e) {
-					e.printStackTrace();
-				}
-			 
+		Search search = new Search();
+		System.out.println("test 추가요망");
+		try {
+
+			search.setCategoryId(10);
+			search.list();
+			List<Episode> notice = episodeService.findEpisodeList(search);
+			System.out.println("getCtNm :  " );
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
-//	@Test
-//	 @Ignore
+
+	//	@Test
+	//	 @Ignore
 	public void categoryTest(Integer categoryId){ 
 		Category category = new Category();
 		category.setCategoryId(categoryId); 
@@ -294,6 +293,6 @@ public class PersistenceTests extends BaseDaoConfig{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
+
 	}
 }
