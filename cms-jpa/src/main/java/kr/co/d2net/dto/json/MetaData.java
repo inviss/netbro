@@ -3,10 +3,8 @@ package kr.co.d2net.dto.json;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_DEFAULT)
 public class MetaData {
 	
 	@JsonProperty("category_id")

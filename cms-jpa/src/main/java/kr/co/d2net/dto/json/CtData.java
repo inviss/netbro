@@ -1,9 +1,7 @@
 package kr.co.d2net.dto.json;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_DEFAULT)
 public class CtData {
 	
 	@JsonProperty("ct_id")

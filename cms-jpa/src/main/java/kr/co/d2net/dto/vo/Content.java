@@ -7,10 +7,9 @@ import kr.co.d2net.adapter.json.JsonDateSerializer;
 import kr.co.d2net.adapter.json.JsonTimestampDeSerializer;
 import kr.co.d2net.adapter.json.JsonTimestampSerializer;
 
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_DEFAULT)
 public class Content {
 	
 	private Long ctId;					//컨텐츠ID

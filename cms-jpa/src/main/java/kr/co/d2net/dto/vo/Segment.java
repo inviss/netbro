@@ -2,9 +2,6 @@ package kr.co.d2net.dto.vo;
 
 import java.util.Date;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_DEFAULT)
 public class Segment {
 	
 	Integer categoryId; //카테고리id

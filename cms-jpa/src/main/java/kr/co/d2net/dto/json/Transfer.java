@@ -2,10 +2,8 @@ package kr.co.d2net.dto.json;
 
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_DEFAULT)
 public class Transfer {
 	
 	@JsonProperty("ct_id")

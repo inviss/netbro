@@ -1,8 +1,6 @@
 package kr.co.d2net.dto.vo;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_DEFAULT)
 public class Category {
 	
 	private Integer categoryId;			//카테고리ID
