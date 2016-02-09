@@ -11,7 +11,7 @@
 		<slf.version>1.7.9</slf.version>
 		<jaxb.version>2.1</jaxb.version>
 		<jetty.version>6.1.26</jetty.version>
-		<jackson.version>1.9.13</jackson.version>
+		<jackson.version>2.7.0</jackson.version>
 		<hibernate.version>4.3.6.Final</hibernate.version>
 		<tiles.version>2.2.2</tiles.version>
 		<oracle.version>11.2.0.3</oracle.version>
@@ -127,7 +127,9 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.2</version>
+			<!--  
 			<scope>test</scope>
+			-->
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -254,17 +256,18 @@
 			<version>1.6.4</version>
 		</dependency>
 
-		<!-- jackson -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-jaxrs</artifactId>
-			<version>${jackson.version}</version>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>${jackson.version}</version>
 		</dependency>
+
+
 		<!-- validator -->
 		<dependency>
 			<groupId>javax.validation</groupId>
