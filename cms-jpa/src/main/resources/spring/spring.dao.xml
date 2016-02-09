@@ -39,7 +39,7 @@
 	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml" />
-		<property name="persistenceUnitName" value="netbro_db2" />
+		<property name="persistenceUnitName" value="netbro_hsql" />
 		<property name="jpaDialect" ref="jpaDialect" />
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="kr.co.d2net.dto" />

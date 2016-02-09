@@ -8,15 +8,24 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-
+  <!--  
 	<mvc:annotation-driven>
 		<mvc:async-support default-timeout="3000" task-executor="asyncTaskExecutor">
 			<mvc:callable-interceptors>
-				<bean class="async.TimeoutProcessingInterceptor" />
+				<bean class="org.springframework.web.servlet.config.MvcNamespaceTests.TestCallableProcessingInterceptor" />
 			</mvc:callable-interceptors>
+			<mvc:deferred-result-interceptors>
+				<bean class="org.springframework.web.servlet.config.MvcNamespaceTests.TestDeferredResultProcessingInterceptor" />
+			</mvc:deferred-result-interceptors>
 		</mvc:async-support>
 	</mvc:annotation-driven>
-	
+
+	<bean id="asyncTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	    <property name="corePoolSize" value="5" />
+	    <property name="maxPoolSize" value="10" />
+	    <property name="queueCapacity" value="25" />
+	</bean>
+-->
 	<!-- annotation config & scan -->
 	<context:annotation-config />
 	<context:component-scan base-package="kr.co.d2net.controller, kr.co.d2net.aop.mvc" />
@@ -130,7 +139,7 @@
 	</bean>
 
 
-	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonViewView" />
 	
 	<bean id="fileView" class="kr.co.d2net.controller.viewer.FileDownloadView" />
 

@@ -61,7 +61,7 @@
 			<property name="javax.persistence.target-database" value="hsql" />
 
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:mem:aname" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:mem:aname" /> <!-- jdbc:hsqldb:mem://localhost -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
 
