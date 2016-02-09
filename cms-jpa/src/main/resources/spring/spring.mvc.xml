@@ -111,7 +111,7 @@
 		<!-- 위의 viewResolvers 에 의해 view를 얻지 못했을 경우에 사용되는 view -->
 		<property name="defaultViews">
 			<list>
-				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 					<property name="prefixJson" value="true" />
 				</bean>
 				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
@@ -139,7 +139,7 @@
 	</bean>
 
 
-	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonViewView" />
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 	
 	<bean id="fileView" class="kr.co.d2net.controller.viewer.FileDownloadView" />
 
