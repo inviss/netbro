@@ -51,7 +51,7 @@ public class CategoryTbl extends BaseObject {
 	@TableGenerator(name = "CATE_ID_SEQ", table = "ID_GEN_TBL", 
     	pkColumnName = "ENTITY_NAME", pkColumnValue = "CATEGORY_ID_SEQ", valueColumnName = "VALUE", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CATE_ID_SEQ")
-	@BusinessKey
+	@BusinessKey(include = Method.TO_STRING)
 	@Column(name="CATEGORY_ID", length=10)
 	private Integer categoryId;	//카테고리ID
 	
