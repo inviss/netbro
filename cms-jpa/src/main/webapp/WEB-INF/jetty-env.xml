@@ -1,0 +1,16 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure id ="h2db" class="org.eclipse.jetty.webapp.WebAppContext">
+    <New id="h2Datasource" class="org.eclipse.jetty.plus.jndi.Resource">
+        <Arg>jdbc/h2db</Arg>
+        <Arg>
+            <New class="org.apache.commons.dbcp.BasicDataSource">
+                <Set name="driverClassName">org.hsqldb.jdbcDriver</Set>
+                <Set name="url">jdbc:hsqldb:mem://localhost</Set>
+                <Set name="username">sa</Set>
+                <Set name="password"></Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>
