@@ -30,7 +30,7 @@ public class ArchiveTbl extends BaseObject{
 	@TableGenerator(name = "ARCHIVE_SEQ", table = "ID_GEN_TBL", 
 	pkColumnName = "ENTITY_NAME", pkColumnValue = "ARCHIVE_SEQ", valueColumnName = "VALUE", initialValue = 1,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "ARCHIVE_SEQ")
-	@BusinessKey	
+	@BusinessKey(include = Method.TO_STRING)
 	@Column(name="SEQ", length=16)
 	private Long seq;	//seq
 
