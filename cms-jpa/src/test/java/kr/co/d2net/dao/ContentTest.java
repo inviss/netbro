@@ -236,6 +236,12 @@ public class ContentTest {
 			
 		}
 		System.out.println("get content: "+contentsTbl2.getCtNm()+", use_yn: "+contentsTbl2.getUseYn());
+		
+		ContentsTbl contentsTbl3 = repository.find(ContentsTbl.class, 1L);
+		System.out.println("get content: "+contentsTbl3.getCtNm()+", use_yn: "+contentsTbl3.getUseYn());
+		System.out.println("===========================================");
+		contentsTbl3 = repository.find(ContentsTbl.class, 1L);
+		System.out.println("get content: "+contentsTbl3.getCtNm()+", use_yn: "+contentsTbl3.getUseYn());
 	}
 
 	@SuppressWarnings({ "serial", "unused" })

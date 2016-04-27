@@ -34,4 +34,15 @@ public class WebTestController {
 		return map;
 	}
 	
+	@RequestMapping(value="/login.ssc", method = RequestMethod.GET)
+	public ModelMap netbro(ModelMap map) {
+		
+		try {
+		} catch (Exception e) {
+			logger.error("editList Error", e);
+		}
+		
+		return map;
+	}
+	
 }

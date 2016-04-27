@@ -21,7 +21,7 @@ public class ManualWatcher {
         //tempFile.deleteOnExit();
         //File watchingFolder = tempFile.getParentFile();
 
-        FileWatcher watcher = FileWatcher.create(new File("X:/"));
+        FileWatcher watcher = FileWatcher.create(new File("D:/watcher"));
 
         watcher.addFileEventsListener(new FileEventsListener() {
             public void fileAdded(FileEvent.Added e) {

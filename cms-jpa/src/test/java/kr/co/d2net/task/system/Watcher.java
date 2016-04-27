@@ -108,6 +108,11 @@ public class Watcher {
 				// Context for directory entry event is the file name of entry
 				WatchEvent<Path> ev = cast(event);
 				Path name = ev.context();
+				
+				if(Files.isDirectory(name, java.nio.file.LinkOption.NOFOLLOW_LINKS)) {
+					System.out.println("directory");
+				}
+				
 				Path child = dir.resolve(name);
 
 				// print out event
